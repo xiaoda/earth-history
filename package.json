@@ -1,0 +1,24 @@
+{
+  "name": "earth-history",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiaoda/earth-history.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/xiaoda/earth-history/issues"
+  },
+  "homepage": "https://github.com/xiaoda/earth-history#readme",
+  "devDependencies": {
+    "sharp": "^0.35.2"
+  }
+}

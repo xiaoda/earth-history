@@ -27,6 +27,39 @@ body {
   position: relative;
   width: min(100vw, calc(100vh * 1672 / 941));
   height: min(100vh, calc(100vw * 941 / 1672));
+  background: #0a0a0a;
+  overflow: hidden;
+}
+
+.image-stage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, #1a1a2e 8%, #16213e 18%, #1a1a2e 33%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s linear infinite;
+  z-index: 1;
+}
+
+.image-stage.loaded::before {
+  display: none;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.image-stage picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 .image-stage img {
@@ -34,6 +67,16 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  filter: blur(20px);
+  transform: scale(1.05);
+  opacity: 0;
+  transition: filter 0.6s ease-out, opacity 0.4s ease-out, transform 0.6s ease-out;
+}
+
+.image-stage img.loaded {
+  filter: blur(0);
+  transform: scale(1);
+  opacity: 1;
 }
 
 .hotspots {
@@ -41,6 +84,7 @@ body {
   inset: 0;
   width: 100%;
   height: 100%;
+  z-index: 3;
 }
 
 .hotspots rect {

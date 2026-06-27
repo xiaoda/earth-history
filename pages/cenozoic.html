@@ -7,12 +7,43 @@
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
-  <a class="back-rail back-rail-small back-home" href="../index.html" aria-label="返回地球历史首页"><span>返回地球历史</span></a>
-  <a class="back-rail back-rail-small back-parent" href="phanerozoic.html" aria-label="返回显生宙页面"><span>返回显生宙</span></a>
+  <a class="back-rail back-rail-small back-home" href="../index.html" aria-label="返回地球历史首页" style="opacity:0; transition: opacity 0.4s ease-out;"><span>返回地球历史</span></a>
+  <a class="back-rail back-rail-small back-parent" href="phanerozoic.html" aria-label="返回显生宙页面" style="opacity:0; transition: opacity 0.4s ease-out;"><span>返回显生宙</span></a>
   <main class="image-page" aria-label="新生代">
-    <div class="image-stage">
-      <img src="../images/cenozoic-era.png" alt="新生代全屏图" />
+    <div class="image-stage" id="mainStage">
+      <picture>
+        <source srcset="../images/optimized/cenozoic-era.webp" type="image/webp" />
+        <img 
+          src="../images/optimized/cenozoic-era.jpg" 
+          alt="新生代全屏图"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+      </picture>
     </div>
   </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const stage = document.getElementById('mainStage');
+      const img = stage.querySelector('img');
+      const backRails = document.querySelectorAll('.back-rail');
+      
+      function revealImage() {
+        img.classList.add('loaded');
+        stage.classList.add('loaded');
+        backRails.forEach(el => el.style.opacity = '1');
+      }
+      
+      if (img.complete && img.naturalHeight !== 0) {
+        requestAnimationFrame(revealImage);
+      } else {
+        img.addEventListener('load', function onLoad() {
+          img.removeEventListener('load', onLoad);
+          requestAnimationFrame(revealImage);
+        });
+      }
+    });
+  </script>
 </body>
 </html>

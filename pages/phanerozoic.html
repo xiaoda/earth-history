@@ -7,11 +7,20 @@
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
-  <a class="back-rail" href="../index.html" aria-label="返回地球历史首页"><span>返回地球历史</span></a>
+  <a class="back-rail" href="../index.html" aria-label="返回地球历史首页" style="opacity:0; transition: opacity 0.4s ease-out;"><span>返回地球历史</span></a>
   <main class="image-page" aria-label="显生宙">
-    <div class="image-stage">
-      <img src="../images/phanerozoic-eon.png" alt="显生宙全屏图" />
-      <svg class="hotspots" viewBox="0 0 1672 941" aria-label="显生宙页面链接">
+    <div class="image-stage" id="mainStage">
+      <picture>
+        <source srcset="../images/optimized/phanerozoic-eon.webp" type="image/webp" />
+        <img 
+          src="../images/optimized/phanerozoic-eon.jpg" 
+          alt="显生宙全屏图"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+      </picture>
+      <svg class="hotspots" viewBox="0 0 1672 941" aria-label="显生宙页面链接" style="opacity:0; transition: opacity 0.4s ease-out;">
         <a href="paleozoic.html" aria-label="进入古生代页面">
           <rect x="333" y="97" width="455" height="66" />
         </a>
@@ -24,8 +33,29 @@
       </svg>
     </div>
   </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const stage = document.getElementById('mainStage');
+      const img = stage.querySelector('img');
+      const backRail = document.querySelector('.back-rail');
+      const hotspots = stage.querySelector('.hotspots');
+      
+      function revealImage() {
+        img.classList.add('loaded');
+        stage.classList.add('loaded');
+        if (backRail) backRail.style.opacity = '1';
+        if (hotspots) hotspots.style.opacity = '1';
+      }
+      
+      if (img.complete && img.naturalHeight !== 0) {
+        requestAnimationFrame(revealImage);
+      } else {
+        img.addEventListener('load', function onLoad() {
+          img.removeEventListener('load', onLoad);
+          requestAnimationFrame(revealImage);
+        });
+      }
+    });
+  </script>
 </body>
 </html>
-
-
-

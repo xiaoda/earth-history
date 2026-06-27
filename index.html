@@ -8,9 +8,18 @@
 </head>
 <body>
   <main class="image-page" aria-label="地球历史">
-    <div class="image-stage">
-      <img src="images/earth.png" alt="地球历史时间轴总览" />
-      <svg class="hotspots" viewBox="0 0 1672 941" aria-label="地球历史页面链接">
+    <div class="image-stage" id="mainStage">
+      <picture>
+        <source srcset="images/optimized/earth.webp" type="image/webp" />
+        <img 
+          src="images/optimized/earth.jpg" 
+          alt="地球历史时间轴总览"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+      </picture>
+      <svg class="hotspots" viewBox="0 0 1672 941" aria-label="地球历史页面链接" style="opacity:0; transition: opacity 0.4s ease-out;">
         <a href="pages/hadean.html" aria-label="进入冥古宙页面">
           <rect x="88" y="145" width="165" height="49" />
         </a>
@@ -35,11 +44,29 @@
       </svg>
     </div>
   </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const stage = document.getElementById('mainStage');
+      const img = stage.querySelector('img');
+      const hotspots = stage.querySelector('.hotspots');
+      
+      function revealImage() {
+        img.classList.add('loaded');
+        stage.classList.add('loaded');
+        if (hotspots) {
+          hotspots.style.opacity = '1';
+        }
+      }
+      
+      if (img.complete && img.naturalHeight !== 0) {
+        requestAnimationFrame(revealImage);
+      } else {
+        img.addEventListener('load', function onLoad() {
+          img.removeEventListener('load', onLoad);
+          requestAnimationFrame(revealImage);
+        });
+      }
+    });
+  </script>
 </body>
 </html>
-
-
-
-
-
-
