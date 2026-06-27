@@ -7,8 +7,7 @@
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
-  <a class="back-rail back-rail-small back-home" href="../index.html" aria-label="返回地球历史首页" style="opacity:0; transition: opacity 0.4s ease-out;"><span>返回地球历史</span></a>
-  <a class="back-rail back-rail-small back-parent" href="phanerozoic.html" aria-label="返回显生宙页面" style="opacity:0; transition: opacity 0.4s ease-out;"><span>返回显生宙</span></a>
+  <a class="back-rail" href="phanerozoic.html" aria-label="返回显生宙页面" style="opacity:0; transition: opacity 0.15s ease-out;"><span>返回显生宙</span></a>
   <main class="image-page" aria-label="新生代">
     <div class="image-stage" id="mainStage">
       <picture>
@@ -27,12 +26,12 @@
     document.addEventListener('DOMContentLoaded', function() {
       const stage = document.getElementById('mainStage');
       const img = stage.querySelector('img');
-      const backRails = document.querySelectorAll('.back-rail');
+      const backRail = document.querySelector('.back-rail');
       
       function revealImage() {
         img.classList.add('loaded');
         stage.classList.add('loaded');
-        backRails.forEach(el => el.style.opacity = '1');
+        if (backRail) backRail.style.opacity = '1';
       }
       
       if (img.complete && img.naturalHeight !== 0) {
