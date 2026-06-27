@@ -16,6 +16,8 @@ body {
 }
 
 .image-page {
+  position: fixed;
+  inset: 0;
   width: 100vw;
   height: 100vh;
   display: grid;
@@ -98,8 +100,8 @@ body {
   top: 50%;
   z-index: 10;
   transform: translateY(-50%);
-  width: 56px;
-  min-height: 250px;
+  width: 46px;
+  min-height: 200px;
   display: grid;
   place-items: center;
   color: #ffffff;
@@ -107,14 +109,14 @@ body {
   background: #111;
   border: 1px solid rgba(255,255,255,.65);
   border-left: 0;
-  border-radius: 0 14px 14px 0;
+  border-radius: 0 12px 12px 0;
 }
 
 .back-rail span {
   writing-mode: vertical-rl;
   text-orientation: upright;
-  letter-spacing: .18em;
-  font-size: 16px;
+  letter-spacing: .14em;
+  font-size: 14px;
   font-weight: 700;
 }
 
@@ -125,12 +127,12 @@ body {
 
 @media (max-width: 640px) {
   .back-rail {
-    width: 44px;
-    min-height: 210px;
+    width: 38px;
+    min-height: 170px;
   }
 
   .back-rail span {
-    font-size: 14px;
+    font-size: 13px;
   }
 }
 

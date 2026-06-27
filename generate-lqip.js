@@ -17,7 +17,10 @@ const images = [
   { file: 'phanerozoic-eon.png', output: 'phanerozoic-eon' },
   { file: 'paleozoic-era.png', output: 'paleozoic-era' },
   { file: 'mesozoic-era.png', output: 'mesozoic-era' },
-  { file: 'cenozoic-era.png', output: 'cenozoic-era' }
+  { file: 'cenozoic-era.png', output: 'cenozoic-era' },
+  { file: 'atmospheric-evolution.png', output: 'atmospheric-evolution' },
+  { file: 'ocean-and-continental-evolution.png', output: 'ocean-and-continental-evolution' },
+  { file: 'cambrian.png', output: 'cambrian' }
 ];
 
 async function generateLQIP(filename, outputName) {

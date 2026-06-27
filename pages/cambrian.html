@@ -1,30 +1,25 @@
-﻿﻿﻿﻿<!doctype html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>古生代｜地球历史</title>
+  <title>寒武纪｜地球历史</title>
   <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
-  <a class="back-rail" href="phanerozoic.html" aria-label="返回显生宙页面" style="opacity:0; transition: opacity 0.15s ease-out;"><span>返回显生宙</span></a>
-  <main class="image-page" aria-label="古生代">
+  <a class="back-rail" href="paleozoic.html" aria-label="返回古生代页面" style="opacity:0; transition: opacity 0.15s ease-out;"><span>返回古生代</span></a>
+  <main class="image-page" aria-label="寒武纪">
     <div class="image-stage" id="mainStage">
       <picture>
-        <source srcset="../images/optimized/paleozoic-era.webp" type="image/webp" />
-        <img 
-          src="../images/optimized/paleozoic-era.jpg" 
-          alt="古生代全屏图"
+        <source srcset="../images/optimized/cambrian.webp" type="image/webp" />
+        <img
+          src="../images/optimized/cambrian.jpg"
+          alt="寒武纪信息图"
           loading="eager"
           decoding="async"
           fetchpriority="high"
         />
       </picture>
-      <svg class="hotspots" viewBox="0 0 1672 941" aria-label="古生代页面链接" style="opacity:0; transition: opacity 0.15s ease-out;">
-        <a href="cambrian.html" aria-label="进入寒武纪页面">
-          <rect x="438" y="46" width="149" height="55" />
-        </a>
-      </svg>
     </div>
   </main>
   <script>
@@ -32,15 +27,15 @@
       const stage = document.getElementById('mainStage');
       const img = stage.querySelector('img');
       const backRail = document.querySelector('.back-rail');
-      const hotspots = stage.querySelector('.hotspots');
-      
+
       function revealImage() {
         img.classList.add('loaded');
         stage.classList.add('loaded');
-        if (backRail) backRail.style.opacity = '1';
-        if (hotspots) hotspots.style.opacity = '1';
+        if (backRail) {
+          backRail.style.opacity = '1';
+        }
       }
-      
+
       if (img.complete && img.naturalHeight !== 0) {
         requestAnimationFrame(revealImage);
       } else {

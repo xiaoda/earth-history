@@ -20,7 +20,10 @@ const images = [
   'phanerozoic-eon.png',
   'paleozoic-era.png',
   'mesozoic-era.png',
-  'cenozoic-era.png'
+  'cenozoic-era.png',
+  'atmospheric-evolution.png',
+  'ocean-and-continental-evolution.png',
+  'cambrian.png'
 ];
 
 async function optimizeImage(filename) {
