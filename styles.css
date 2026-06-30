@@ -91,7 +91,30 @@ body {
 
 .hotspots rect {
   fill: transparent;
+  stroke: transparent;
+  stroke-width: 2px;
+  vector-effect: non-scaling-stroke;
   cursor: pointer;
+  transition:
+    fill 160ms ease,
+    stroke 160ms ease,
+    filter 160ms ease;
+}
+
+.hotspots a:hover rect,
+.hotspots a:focus-visible rect {
+  fill: rgba(255, 184, 74, 0.16);
+  stroke: #ffc76a;
+  filter: drop-shadow(0 0 5px rgba(255, 169, 55, 0.95));
+}
+
+.hotspots a:focus-visible {
+  outline: none;
+}
+
+.hotspots a:active rect {
+  fill: rgba(255, 184, 74, 0.28);
+  stroke: #fff3c7;
 }
 
 .back-rail {
@@ -110,6 +133,30 @@ body {
   border: 1px solid rgba(255,255,255,.65);
   border-left: 0;
   border-radius: 0 12px 12px 0;
+  box-shadow: 0 0 0 rgba(255, 184, 74, 0);
+  transition:
+    opacity 0.15s ease-out,
+    transform 180ms ease,
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease !important;
+}
+
+.back-rail:hover,
+.back-rail:focus-visible {
+  color: #fff4d6;
+  background: #291b0b;
+  border-color: #ffc76a;
+  box-shadow:
+    0 0 0 1px rgba(255, 199, 106, 0.24),
+    5px 0 18px rgba(255, 169, 55, 0.35);
+  transform: translateY(-50%) translateX(5px);
+}
+
+.back-rail:active {
+  background: #3a260e;
+  transform: translateY(-50%) translateX(2px);
 }
 
 .back-rail span {
@@ -121,8 +168,15 @@ body {
 }
 
 .back-rail:focus-visible {
-  outline: 3px solid #ffffff;
+  outline: 3px solid #ffc76a;
   outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hotspots rect,
+  .back-rail {
+    transition-duration: 0.01ms !important;
+  }
 }
 
 @media (max-width: 640px) {
